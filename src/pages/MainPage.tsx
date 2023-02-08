@@ -1,6 +1,7 @@
 import { useState } from "react";
 import data from "../../data.json";
 import SearchAndFilter from "../components/SearchAndFilter";
+import { Link } from "react-router-dom";
 
 function SingleCountry() {
   const [search, setSearch] = useState<string>("");
@@ -33,7 +34,10 @@ function SingleCountry() {
           )
           .map((country) => {
             return (
-              <div className=" bg-white dark:bg-dark-blue rounded-lg overflow-hidden h-[340px]	cursor-pointer shadow-lg">
+              <Link
+                to={`/country/${country.name}`}
+                className=" bg-white dark:bg-dark-blue rounded-lg overflow-hidden h-[340px]	cursor-pointer shadow-lg"
+              >
                 <div className="h-[170px]">
                   <img
                     className="h-full w-full object-cover"
@@ -58,7 +62,7 @@ function SingleCountry() {
                     <span className="font-medium">{country.capital}</span>{" "}
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>
