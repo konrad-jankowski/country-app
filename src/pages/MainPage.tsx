@@ -14,8 +14,6 @@ function SingleCountry() {
     "subregion",
   ];
 
-  console.log(selected);
-
   return (
     <>
       <SearchAndFilter
@@ -23,10 +21,10 @@ function SingleCountry() {
         selected={selected}
         setSelected={setSelected}
       />
-      <div className="grid grid-cols-4 gap-10 px-[7%] mt-10 text-white">
+      <div className="grid grid-cols-4 gap-10 px-[7%] my-10 text-text-lm dark:text-white">
         {data
           .filter((item) => {
-            return keys.some((key): number =>
+            return keys.some((key) =>
               item[key]?.toLowerCase().includes(search)
             );
           })
@@ -35,7 +33,7 @@ function SingleCountry() {
           )
           .map((country) => {
             return (
-              <div className=" bg-dark-blue rounded-lg overflow-hidden h-[340px]	cursor-pointer">
+              <div className=" bg-white dark:bg-dark-blue rounded-lg overflow-hidden h-[340px]	cursor-pointer shadow-lg">
                 <div className="h-[170px]">
                   <img
                     className="h-full w-full object-cover"

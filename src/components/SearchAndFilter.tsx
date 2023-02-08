@@ -13,24 +13,24 @@ function SearchAndFilter({ setSearch, selected, setSelected }: Lol) {
   const countries = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
-    <div className="px-[7%] my-10 flex justify-between text-white">
+    <div className="px-[7%] my-10 flex justify-between">
       <input
         onChange={(e) => setSearch(e.target.value)}
-        className="bg-dark-blue rounded-md w-[800px] pl-6"
+        className="bg-white shadow-md dark:bg-dark-blue text-text-lm dark:text-white rounded-md w-[800px] pl-6"
         type="search"
         placeholder="Search for country"
       />
       <div>
         <div
           onClick={() => setToggle((prev) => !prev)}
-          className="bg-dark-blue text-white min-w-[190px] py-3 px-5 flex items-center gap-4 justify-between rounded-md cursor-pointer relative"
+          className="bg-white shadow-md dark:bg-dark-blue text-text-lm dark:text-white min-w-[190px] py-3 px-5 flex items-center gap-4 justify-between rounded-md cursor-pointer relative"
         >
           {selected ? selected : "Filter by Region"}
           {toggle ? <IoIosArrowUp /> : <IoIosArrowDown />}
 
           <ul
             onClick={() => setToggle(true)}
-            className={`bg-dark-blue rounded w-full absolute top-14 left-0 ${
+            className={`bg-white shadow-md dark:bg-dark-blue rounded w-full absolute top-14 left-0 ${
               toggle ? null : "hidden"
             }`}
           >
