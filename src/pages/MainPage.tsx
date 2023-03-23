@@ -35,7 +35,8 @@ function SingleCountry() {
           .map((country) => {
             return (
               <Link
-                to={`/country/${country.name}`}
+                key={country.name}
+                to={`/${country.alpha3Code}`}
                 className=" bg-white dark:bg-dark-blue rounded-lg overflow-hidden h-[340px]	cursor-pointer shadow-lg"
               >
                 <div className="h-[170px]">

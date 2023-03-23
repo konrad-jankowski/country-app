@@ -5,13 +5,13 @@ import { Route, Routes } from "react-router";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/country/:countryName" element={<SingleCountry />} />
+        <Route path="/:alpha3Code" element={<SingleCountry />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

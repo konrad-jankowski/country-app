@@ -34,8 +34,9 @@ function SearchAndFilter({ setSearch, selected, setSelected }: Lol) {
               toggle ? null : "hidden"
             }`}
           >
-            {countries.map((item) => (
+            {countries.map((item, i) => (
               <li
+                key={i}
                 onClick={() => {
                   if (item !== selected) {
                     setSelected(item);

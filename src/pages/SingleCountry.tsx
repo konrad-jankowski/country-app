@@ -1,13 +1,16 @@
 import data from "../../data.json";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { countryToAlpha2 } from "country-to-iso";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 function SingleCountry() {
-  const { countryName } = useParams();
-  const country = data.find((country) => country.name === countryName);
+  const { alpha3Code } = useParams();
+  const country = data.find((country) => country.alpha3Code == alpha3Code);
 
-  var getCountryNames = new Intl.DisplayNames(["en"], { type: "region" });
+  const navigate = useNavigate();
+
+  const getCountryNames = new Intl.DisplayNames(["en"], { type: "region" });
+
   return (
     <main className="dark:text-white px-[7%] mt-10">
       <Link to="/">
@@ -72,26 +75,30 @@ function SingleCountry() {
               </div>
             </div>
           </div>
-          <div className="mt-6 flex gap-2 items-center">
+          <div className="mt-6 flex gap-3 items-center">
             <p>
               {country?.borders
                 ? "Border Countries:"
                 : "Do not border with any country."}
             </p>
-            {country?.borders?.map((item, index) => {
-              let alpha3 = countryToAlpha2(item);
-              if (alpha3 !== null) {
-                getCountryNames.of(alpha3);
-                return (
-                  <span
-                    key={index}
-                    className="dark:bg-dark-blue bg-white text-sm px-3 py-1 rounded shadow cursor-pointer"
-                  >
-                    {getCountryNames.of(alpha3)}
-                  </span>
-                );
-              }
-            })}
+            <div className="flex flex-wrap gap-3">
+              {country?.borders?.map((item, index) => {
+                let alpha3 = countryToAlpha2(item);
+
+                if (alpha3 !== null) {
+                  getCountryNames.of(alpha3);
+                  return (
+                    <span
+                      onClick={() => navigate(`/${item}`)}
+                      key={index}
+                      className="dark:bg-dark-blue bg-white text-sm px-3 py-1 rounded shadow cursor-pointer dark:hover:bg-white/20 hover:bg-dark-blue/20"
+                    >
+                      {getCountryNames.of(alpha3)}
+                    </span>
+                  );
+                }
+              })}
+            </div>
           </div>
         </div>
       </div>

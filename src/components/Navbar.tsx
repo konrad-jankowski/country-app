@@ -1,5 +1,6 @@
 import { MdOutlineDarkMode } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [theme, setTheme] = useState("dark");
@@ -19,9 +20,9 @@ function Navbar() {
   return (
     <nav className="bg-white dark:bg-dark-blue text-text-lm dark:text-white px-[7%] py-4 shadow-md">
       <ul className="flex justify-between items-center">
-        <li className="text-3xl font-semibold">
+        <Link to="/" className="text-3xl font-semibold">
           <h1>Where is the world?</h1>
-        </li>
+        </Link>
         <li
           onClick={handleThemeSwitch}
           className="flex items-center gap-1 text-[17px] cursor-pointer select-none"
